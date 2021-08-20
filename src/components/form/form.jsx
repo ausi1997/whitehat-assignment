@@ -2,15 +2,20 @@ import React, { useState } from  "react";
 
 import {Button , TextField } from "@material-ui/core";
 
+import {Link} from "react-router-dom";
+
 const Form = ()=>{
 
     const [number , setNumber] = useState('');
     const [height , setHeight] = useState('');
     const [width , setWidth]   = useState('');
-
+ 
     const Submit = ()=>{
-        console.log(number,height,width);
+        localStorage.setItem('number',number);
+        localStorage.setItem('height',height);
+        localStorage.setItem('width',width);
     }
+
     return(
         <div style={{marginLeft:"10px"}}>
         <h2>Fill it</h2>
@@ -29,9 +34,11 @@ const Form = ()=>{
          onChange={(e) => setWidth(e.target.value)} variant="outlined" />
         </form>
         <br></br>
-        <Button variant="contained" onClick={Submit} color="primary">
-        Submit
+        <Link to='/rectangle' style={{textDecorationLine:'none'}}>
+        <Button variant="contained" color="primary" onClick={Submit}>
+         Submit
       </Button>
+      </Link>
         </div>
     )
 }
