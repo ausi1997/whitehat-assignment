@@ -1,9 +1,12 @@
 import React from "react";
 
 import {Rect , Stage , Layer} from "react-konva";
+import { useHistory } from "react-router-dom";
+import {Button} from "@material-ui/core";
 
 const Rectangle  = ()=>{
 
+  const history = useHistory();
   let rectangle = [];
     var number = localStorage.getItem('number');
     var height = localStorage.getItem('height');
@@ -27,9 +30,16 @@ const Rectangle  = ()=>{
       height=height-20;
     }
   
+const Submit = ()=>{
+      localStorage.clear();
+      history.push('/');
+}
 
     return(
       <div>
+      <Button style={{marginLeft:'20px', marginTop:'20px'}} variant="contained" color="primary" onClick={Submit}>
+      Close
+   </Button>
         <Stage width={window.innerWidth} height={window.innerHeight}>
         <Layer>
          {
